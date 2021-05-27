@@ -3,6 +3,7 @@ from turtle import Turtle
 FONT = ("Arial", 24, "normal")
 ALIGNMENT = "center"
 
+
 class Score(Turtle):
     def __init__(self):
         self.points = 0
@@ -24,4 +25,7 @@ class Score(Turtle):
     def game_over(self):
         self.home()
         self.color("red")
-        self.write("Game Over", align=ALIGNMENT, font=FONT)
+        self.write("Game Over.", align=ALIGNMENT, font=FONT)
+        self.penup()
+        self.sety(-50)
+        self.write("Press Space to Start Again.", align=ALIGNMENT, font=FONT)
