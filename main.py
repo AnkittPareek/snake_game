@@ -16,6 +16,7 @@ our_food = Food()
 bob = Builder()
 score = Score()
 
+
 def start():
     our_snake.head.home()
     our_food.clear()
@@ -33,6 +34,7 @@ def start():
         screen.update()
         time.sleep(0.1)
         our_snake.move()
+        score.update()
 
         if our_snake.head.distance(our_food) < 15:
             our_food.refresh()
@@ -42,12 +44,17 @@ def start():
                 or our_snake.head.ycor() < -280 or our_snake.head.ycor() > 280:
             game_is_on = False
             score.game_over()
+            our_snake.reset()
         for square in our_snake.squares[1:]:
             if our_snake.head.distance(square) < 10:
                 game_is_on = False
                 score.game_over()
+                our_snake.reset()
+
 
 start()
-
-screen.onkey(key="space", fun=start)
+# choice = screen.textinput("You lost!!", "Do you want to try again? Y or N").lower()
+#
+# if choice == "y":
+#     start()
 screen.exitonclick()

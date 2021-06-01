@@ -52,5 +52,13 @@ class Snake:
 
         self.head.forward(MOVE_DISTANCE)
 
+    def reset(self):
+        for square in self.squares:
+            square.goto(1000,1000)
+        self.squares.clear()
+        self.squares = []
+        self.create_snake()
+        self.head = self.squares[0]
+
     def extend(self):
         self.add_square(self.squares[-1].position())
